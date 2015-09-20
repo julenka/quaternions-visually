@@ -4,6 +4,12 @@ using System;
 
 public class AngleAxisController : MonoBehaviour
 {
+	/// <summary>
+	/// Rotate axis rod around Y axis at a slow pace
+	/// </summary>
+	public bool m_rotateY;
+	public float m_rotateSpeed;
+
     private GorillaController m_Gorilla;
     private GameObject m_sphere;
     private float m_height;
@@ -21,6 +27,9 @@ public class AngleAxisController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		if (m_rotateY) {
+			transform.RotateAround(transform.position, Vector3.up, m_rotateSpeed * Time.deltaTime);	
+		}
 
         Vector3 rotationAxis = getRotationAxis();
 
@@ -29,6 +38,8 @@ public class AngleAxisController : MonoBehaviour
 
         float angle = getAngle();
         m_Gorilla.SetRotation(rotationAxis, angle);
+
+
 
     }
 
