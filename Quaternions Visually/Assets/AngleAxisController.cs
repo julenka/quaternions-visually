@@ -23,8 +23,13 @@ public class AngleAxisController : MonoBehaviour
     {
 
         Vector3 rotationAxis = getRotationAxis();
+
+		// Ensure we are only moving along y axis
+		m_sphere.transform.localPosition = new Vector3(0, m_sphere.transform.localPosition.y, 0);
+
         float angle = getAngle();
         m_Gorilla.SetRotation(rotationAxis, angle);
+
     }
 
     private float getAngle()
